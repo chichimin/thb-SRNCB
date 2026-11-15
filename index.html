@@ -213,6 +213,8 @@ footer .srcs a{color:var(--muted)}
 </footer>
 
 <script>
+// 資料來源：Google Apps Script 網頁應用程式網址（/exec 結尾）；留空則讀取同目錄的 data.json
+const DATA_URL = "";
 const ORG = {key:"org", n:0, r:"新工南", cls:"org", name:"分局綜合（分局本身相關）"};
 const DEFAULT_PROJECTS = [
   {key:"p123ae523d5",n:1, r:"國3",cls:"nat",name:"代辦古坑交流道平面側車道工程"},
@@ -360,9 +362,18 @@ setInterval(()=>{ $("nextRun").textContent = tw(nextRunTs()); }, 60000);
 (async () => {
   const showNotice = t => { const el=$("notice"); el.textContent=t; el.hidden=!t; };
   try {
-    const res = await fetch("data.json?t=" + Date.now(), {cache:"no-store"});
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    const d = await res.json();
+    let d = null;
+    if (DATA_URL) {
+      try {
+        const r = await fetch(DATA_URL + (DATA_URL.includes("?") ? "&" : "?") + "t=" + Date.now());
+        if (r.ok) { const j = await r.json(); if (j && j.meta) d = j; }
+      } catch (e) { d = null; }
+    }
+    if (!d) {
+      const res = await fetch("data.json?t=" + Date.now(), {cache:"no-store"});
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      d = await res.json();
+    }
     if (d.projects && Array.isArray(d.projects.items)) {
       setProjects(d.projects.items);
       if (d.projects.syncedTs) $("psrc").textContent = `清單同步自「新工南-目前進行中工程」，最後同步 ${tw(d.projects.syncedTs)}`;
