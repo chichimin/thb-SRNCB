@@ -140,6 +140,39 @@ footer .srcs a{color:var(--muted)}
   .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ===== 分局識別：logo、小鹿、公路插畫 ===== */
+.topnote{font-size:13px}
+.brand .logo{height:56px;width:auto;display:block}
+.brand .vsep{width:1px;height:40px;background:var(--line)}
+.brand .titles h1{font-size:clamp(20px,3vw,28px);color:var(--sign)}
+.brand .eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.headcard{border-radius:10px;box-shadow:0 6px 18px #0000001a;position:relative;z-index:2}
+.hero{position:relative;height:118px;margin-top:-28px;background:linear-gradient(180deg,var(--sign) 0%,#006b63 100%);overflow:hidden}
+.hero .road{position:absolute;inset:0;width:100%;height:100%}
+.hero-in{position:relative;height:100%;display:flex;align-items:flex-end;justify-content:flex-end;padding-bottom:12px}
+.greet{display:flex;align-items:center;gap:10px}
+.greet .deer{width:72px;height:72px;border-radius:50%;border:3px solid #fff;box-shadow:0 4px 10px #00000033;background:#fff}
+.bubble{position:relative;background:#fff;color:#1a1a1a;border-radius:12px;padding:8px 14px;font-size:13.5px;max-width:420px;box-shadow:0 4px 12px #00000026;line-height:1.5}
+.bubble b{display:block;color:var(--sign);font-size:12.5px}
+.bubble::before{content:"";position:absolute;left:-8px;top:50%;transform:translateY(-50%);border:8px solid transparent;border-right-color:#fff;border-left:0}
+.deer-fab{position:fixed;right:18px;bottom:18px;z-index:20;display:grid;justify-items:center;gap:2px;background:none;border:0;cursor:pointer;padding:0}
+.deer-fab img{width:64px;height:64px;border-radius:50%;border:3px solid #fff;box-shadow:0 4px 12px #00000040;transition:transform .2s}
+.deer-fab:hover img{transform:translateY(-3px) rotate(-4deg)}
+.deer-fab span{background:var(--shield);color:#fff;font-size:11.5px;padding:1px 8px;border-radius:10px;font-weight:700}
+.tile .k{display:flex;align-items:center;gap:6px}
+.tile .k svg{width:18px;height:18px;flex:none;color:var(--sign)}
+.tile.fresh .k svg{color:var(--accent)}
+@media (max-width:700px){
+  .brand{flex-wrap:wrap}
+  .brand .logo{height:38px}
+  .brand .vsep{display:none}
+  .hero{height:auto;margin-top:-20px;padding-top:26px}
+  .hero-in{justify-content:flex-start}
+  .bubble{max-width:none}
+  .deer-fab img{width:52px;height:52px}
+}
+@media (prefers-reduced-motion:reduce){.deer-fab img{transition:none}}
 </style>
 </head>
 <body>
@@ -147,14 +180,15 @@ footer .srcs a{color:var(--muted)}
   <div class="wrap">
     <div class="topbar">
       <span class="org">交通部公路局 南區公路新建工程分局</span>
-      <span style="font-size:13px">進行中工程新聞監測｜近 15 日</span>
+      <span class="topnote">進行中工程新聞監測｜近 15 日</span>
     </div>
     <div class="headcard">
       <div class="brand">
-        <div class="mark" aria-hidden="true">報</div>
-        <div>
-          <div class="eyebrow">Southern Region New Construction Branch · News Monitor</div>
-          <h1>新工南工程輿情日報</h1>
+        <img class="logo" src="logo.png" alt="交通部公路局 南區公路新建工程分局" width="300" height="54">
+        <span class="vsep" aria-hidden="true"></span>
+        <div class="titles">
+          <div class="eyebrow">Engineering News Daily</div>
+          <h1>工程輿情日報</h1>
         </div>
       </div>
       <div class="status" id="status">
@@ -164,15 +198,29 @@ footer .srcs a{color:var(--muted)}
       </div>
     </div>
   </div>
-  <div class="band"></div>
+  <div class="hero">
+    <svg class="road" viewBox="0 0 1200 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <path d="M0 120 C 260 120, 420 64, 700 52 S 1080 40, 1200 30 L1200 120 Z" fill="#ffffff" opacity=".08"/>
+      <path d="M-20 120 C 300 112, 470 70, 760 58 S 1100 44, 1220 38" fill="none" stroke="#25463f" stroke-width="34" stroke-linecap="round" opacity=".55"/>
+      <path d="M-20 120 C 300 112, 470 70, 760 58 S 1100 44, 1220 38" fill="none" stroke="#ffc93a" stroke-width="2.5" stroke-dasharray="18 14"/>
+      <path d="M-20 103 C 300 95, 470 53, 760 41 S 1100 27, 1220 21" fill="none" stroke="#ffffff" stroke-width="1.5" opacity=".55"/>
+      <g fill="#ffffff" opacity=".18"><circle cx="1040" cy="22" r="26"/><circle cx="1075" cy="18" r="20"/><circle cx="1010" cy="26" r="16"/></g>
+    </svg>
+    <div class="wrap hero-in">
+      <div class="greet">
+        <img class="deer" src="deer.png" alt="智能小鹿" width="72" height="72">
+        <div class="bubble"><b>智能小鹿</b><span id="greet">正在整理今天的工程新聞…</span></div>
+      </div>
+    </div>
+  </div>
 </header>
 
 <main class="wrap">
   <section class="tiles" aria-label="摘要">
-    <div class="tile"><div class="k">近 15 日相關新聞</div><div class="v" id="tTotal">—<small>則</small></div></div>
-    <div class="tile fresh"><div class="k">本次更新新增</div><div class="v" id="tNew">—<small>則</small></div></div>
-    <div class="tile"><div class="k">涉及工程</div><div class="v" id="tProj">—<small>項</small></div></div>
-    <div class="tile"><div class="k">每日則數（<span id="tRange">—</span>）</div><div class="trend" id="trend" aria-hidden="true"></div><div class="trend-axis"><span id="tA">—</span><span id="tB">—</span></div></div>
+    <div class="tile"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 8h3v9a2 2 0 0 1-2 2"/><path d="M8 9h5M8 13h5M8 16h3"/></svg>近 15 日相關新聞</div><div class="v" id="tTotal">—<small>則</small></div></div>
+    <div class="tile fresh"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>本次更新新增</div><div class="v" id="tNew">—<small>則</small></div></div>
+    <div class="tile"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4l3.5 15h-11z"/><path d="M8.2 10h7.6M7.2 14h9.6"/><path d="M4 21h16"/></svg>涉及工程</div><div class="v" id="tProj">—<small>項</small></div></div>
+    <div class="tile"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>每日則數（<span id="tRange">—</span>）</div><div class="trend" id="trend" aria-hidden="true"></div><div class="trend-axis"><span id="tA">—</span><span id="tB">—</span></div></div>
   </section>
 
   <div class="layout">
@@ -202,6 +250,7 @@ footer .srcs a{color:var(--muted)}
   </div>
 </main>
 
+<button type="button" class="deer-fab" id="toTop" aria-label="回到頁面頂端"><img src="deer.png" alt="" width="64" height="64"><span>回頂端</span></button>
 <footer>
   <div class="wrap">
     <div>新聞搜尋範圍：</div>
@@ -295,6 +344,18 @@ function render(){
   const newCount = all.filter(n => meta.lastRunId && n.firstSeenRun === meta.lastRunId).length;
   $("tNew").innerHTML = `${meta.lastRunId ? newCount : "—"}<small>則</small>`;
   const projSet = new Set(); all.forEach(n => (n.projects||[]).forEach(x => { if (x!=="org" && P[x]) projSet.add(x); }));
+
+  // 小鹿問候
+  (function(){
+    const g = document.getElementById("greet"); if (!g) return;
+    const d = new Date(Date.now()+8*3600*1000);
+    const day = `${d.getUTCMonth()+1}/${d.getUTCDate()}（${WEEK[d.getUTCDay()]}）`;
+    if (!state.loaded) return;
+    const add = meta.lastRunId ? newCount : 0;
+    g.textContent = all.length
+      ? `今天是 ${day}，近 15 日共有 ${all.length} 則工程相關新聞${add?`，本次新增 ${add} 則，快來看看！`:"，目前沒有新增。"}`
+      : `今天是 ${day}，近 15 日還沒有找到相關新聞，我每 2 小時會再幫你找一次！`;
+  })();
   $("tProj").innerHTML = `${projSet.size}<small>/ ${PROJECTS.length-1} 項</small>`;
   // trend
   const today = twDateKey(Date.now()); const days=[];
@@ -356,6 +417,7 @@ document.addEventListener("click", e => {
   const v = b.getAttribute("data-proj");
   state.proj = (state.proj===v) ? "" : v; render();
 });
+document.getElementById("toTop").addEventListener("click", () => window.scrollTo({top:0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}));
 render();
 setInterval(()=>{ $("nextRun").textContent = tw(nextRunTs()); }, 60000);
 
