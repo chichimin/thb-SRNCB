@@ -203,10 +203,17 @@ footer .srcs a{color:var(--muted)}
   .lockup .emblem{height:36px}
 }
 @media (prefers-reduced-motion:reduce){.crew img{transition:none}}
+
+/* ===== v3：整個頁首改用脊背懸臂橋主視覺 ===== */
+header.top{position:relative;background:
+  linear-gradient(180deg,rgba(0,95,88,.82) 0%,rgba(0,110,102,.45) 28%,rgba(0,0,0,0) 58%,rgba(0,40,36,.45) 100%),
+  var(--hero-img) center 58%/cover no-repeat,var(--sign)}
+.hero{background:none;margin-top:-28px}
+.topbar{text-shadow:0 1px 3px rgba(0,0,0,.45)}
 </style>
 </head>
 <body>
-<header class="top">
+<header class="top" style="--hero-img:url('assets/bridge.jpg')">
   <div class="wrap">
     <div class="topbar">
       <span class="org">交通部公路局 南區公路新建工程分局</span>
@@ -231,7 +238,7 @@ footer .srcs a{color:var(--muted)}
       </div>
     </div>
   </div>
-  <div class="hero" style="--hero-img:url('assets/bridge.jpg')">
+  <div class="hero">
     <div class="wrap hero-in">
       <div class="crew" aria-hidden="true">
         <img class="c1" src="assets/eng1.png" alt="" width="96" height="160">
