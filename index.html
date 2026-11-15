@@ -173,6 +173,36 @@ footer .srcs a{color:var(--muted)}
   .deer-fab img{width:52px;height:52px}
 }
 @media (prefers-reduced-motion:reduce){.deer-fab img{transition:none}}
+
+/* ===== v2：局徽文字標誌、大橋主視覺、工程人員 ===== */
+.lockup{display:flex;align-items:center;gap:10px}
+.lockup .emblem{height:46px;width:auto;display:block}
+.orgname{display:grid;line-height:1.15}
+.orgname small{font-size:12px;color:var(--ink);letter-spacing:.08em}
+.orgname strong{font-family:var(--font-display);font-weight:900;font-size:clamp(19px,2.4vw,25px);color:#1c3f94;letter-spacing:.03em}
+.orgname em{font-style:normal;font-size:8.5px;color:var(--muted);letter-spacing:.01em}
+:root[data-theme="dark"] .orgname strong{color:#8fb0ff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .orgname strong{color:#8fb0ff}}
+.hero{height:200px;background:linear-gradient(180deg,rgba(0,130,121,.92) 0%,rgba(0,130,121,.35) 30%,rgba(0,0,0,0) 55%,rgba(0,40,36,.45) 100%),var(--hero-img) center 62%/cover no-repeat,var(--sign)}
+.hero-in{justify-content:space-between;align-items:flex-end;padding-bottom:0}
+.crew{display:flex;align-items:flex-end;height:100%}
+.crew img{display:block;height:auto;filter:drop-shadow(0 4px 6px rgba(0,0,0,.35));transition:transform .25s}
+.crew img:hover{transform:translateY(-6px)}
+.crew .c1{width:96px;margin-bottom:-4px}
+.crew .c2{width:77px;margin-left:-14px}
+.crew .c3{width:90px;margin-left:-4px;margin-bottom:-4px}
+.crew .c4{width:72px;margin-left:-2px;margin-bottom:-2px}
+.greet{padding-bottom:18px}
+@media (max-width:700px){
+  .hero{height:auto;padding-top:30px}
+  .hero-in{flex-direction:column;align-items:stretch;gap:6px}
+  .greet{order:-1;padding-bottom:0}
+  .crew{height:auto;justify-content:center}
+  .crew .c1{width:72px}.crew .c2{width:58px}.crew .c3{width:68px}.crew .c4{width:54px}
+  .orgname strong{font-size:18px}
+  .lockup .emblem{height:36px}
+}
+@media (prefers-reduced-motion:reduce){.crew img{transition:none}}
 </style>
 </head>
 <body>
@@ -184,7 +214,10 @@ footer .srcs a{color:var(--muted)}
     </div>
     <div class="headcard">
       <div class="brand">
-        <img class="logo" src="logo.png" alt="交通部公路局 南區公路新建工程分局" width="300" height="54">
+        <div class="lockup">
+          <img class="emblem" src="assets/emblem.png" alt="公路局局徽" width="150" height="54">
+          <div class="orgname"><small>交通部公路局</small><strong>南區公路新建工程分局</strong><em>Southern Region New Construction Branch Office, Highway Bureau, MOTC</em></div>
+        </div>
         <span class="vsep" aria-hidden="true"></span>
         <div class="titles">
           <div class="eyebrow">Engineering News Daily</div>
@@ -198,17 +231,16 @@ footer .srcs a{color:var(--muted)}
       </div>
     </div>
   </div>
-  <div class="hero">
-    <svg class="road" viewBox="0 0 1200 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <path d="M0 120 C 260 120, 420 64, 700 52 S 1080 40, 1200 30 L1200 120 Z" fill="#ffffff" opacity=".08"/>
-      <path d="M-20 120 C 300 112, 470 70, 760 58 S 1100 44, 1220 38" fill="none" stroke="#25463f" stroke-width="34" stroke-linecap="round" opacity=".55"/>
-      <path d="M-20 120 C 300 112, 470 70, 760 58 S 1100 44, 1220 38" fill="none" stroke="#ffc93a" stroke-width="2.5" stroke-dasharray="18 14"/>
-      <path d="M-20 103 C 300 95, 470 53, 760 41 S 1100 27, 1220 21" fill="none" stroke="#ffffff" stroke-width="1.5" opacity=".55"/>
-      <g fill="#ffffff" opacity=".18"><circle cx="1040" cy="22" r="26"/><circle cx="1075" cy="18" r="20"/><circle cx="1010" cy="26" r="16"/></g>
-    </svg>
+  <div class="hero" style="--hero-img:url('assets/bridge.jpg')">
     <div class="wrap hero-in">
+      <div class="crew" aria-hidden="true">
+        <img class="c1" src="assets/eng1.png" alt="" width="96" height="160">
+        <img class="c2" src="assets/eng2.png" alt="" width="77" height="140">
+        <img class="c3" src="assets/eng3.png" alt="" width="90" height="160">
+        <img class="c4" src="assets/eng4.png" alt="" width="88" height="120">
+      </div>
       <div class="greet">
-        <img class="deer" src="deer.png" alt="智能小鹿" width="72" height="72">
+        <img class="deer" src="assets/deer.png" alt="智能小鹿" width="72" height="72">
         <div class="bubble"><b>智能小鹿</b><span id="greet">正在整理今天的工程新聞…</span></div>
       </div>
     </div>
@@ -250,7 +282,7 @@ footer .srcs a{color:var(--muted)}
   </div>
 </main>
 
-<button type="button" class="deer-fab" id="toTop" aria-label="回到頁面頂端"><img src="deer.png" alt="" width="64" height="64"><span>回頂端</span></button>
+<button type="button" class="deer-fab" id="toTop" aria-label="回到頁面頂端"><img src="assets/deer.png" alt="" width="64" height="64"><span>回頂端</span></button>
 <footer>
   <div class="wrap">
     <div>新聞搜尋範圍：</div>
