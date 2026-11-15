@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新工南工程輿情日報</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* 版面：上方狀態列＋摘要數字，左欄依日期排列新聞卡，右欄為監測工程清單與更新紀錄；色彩取自台灣公路指示牌的綠底白字。 */
+:root{
+  /* 配色取自南區公路新建工程分局官網：主色藍綠、強調橘、按鈕黃、標誌深藍 */
+  --ink:#222a29;
+  --muted:#5f6d6b;
+  --paper:#f2f6f5;
+  --card:#ffffff;
+  --line:#d6e2e0;
+  --sign:#008279;      /* 官網主色藍綠 */
+  --sign-ink:#ffffff;
+  --accent:#ffa436;    /* 官網橘色斜線 */
+  --yellow:#ffc93a;    /* 官網黃色按鈕 */
+  --shield:#1c3f94;    /* 標誌深藍 */
+  --fresh:#d9480f;
+  --fresh-bg:#ffc93a;
+  --font-display:"Noto Serif TC","Songti TC",serif;
+  --font-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#e4eeec;--muted:#9db3af;--paper:#0e1716;--card:#16221f;--line:#28403c;
+    --sign:#14a396;--sign-ink:#ffffff;--accent:#ffa436;--yellow:#ffc93a;--shield:#7b9bf0;--fresh:#ffa436;--fresh-bg:#ffc93a;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e4eeec;--muted:#9db3af;--paper:#0e1716;--card:#16221f;--line:#28403c;
+  --sign:#14a396;--sign-ink:#ffffff;--accent:#ffa436;--yellow:#ffc93a;--shield:#7b9bf0;--fresh:#ffa436;--fresh-bg:#ffc93a;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sign);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+header.top{background:var(--sign);padding:14px 0 0}
+.topbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 18px;color:var(--sign-ink);padding-bottom:10px}
+.topbar .org{background:#00000022;border-radius:6px;padding:3px 10px;font-size:13.5px;font-weight:500}
+.headcard{background:var(--card);border-radius:10px 10px 0 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding:14px 20px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .mark{width:46px;height:46px;flex:none;border-radius:10px;background:var(--sign);display:grid;place-items:center;color:#fff;font-family:var(--font-display);font-weight:900;font-size:20px;box-shadow:inset 0 -4px 0 var(--accent)}
+.brand .eyebrow{font-size:12px;color:var(--muted);letter-spacing:.06em}
+.brand h1{font-family:var(--font-display);font-weight:900;font-size:clamp(22px,3.6vw,30px);margin:0;letter-spacing:.04em;color:var(--shield);text-wrap:balance;line-height:1.25}
+:root[data-theme="dark"] .brand h1{color:var(--ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brand h1{color:var(--ink)}}
+.brand p{margin:0;font-size:13px;color:var(--muted)}
+.status{display:flex;flex-wrap:wrap;gap:6px 0;font-size:13.5px;color:var(--ink)}
+.status span{padding:0 12px}
+.status span + span::before{content:"/";color:var(--sign);font-weight:700;margin-right:12px;margin-left:-12px}
+.status b{font-family:var(--font-mono);font-weight:500;font-variant-numeric:tabular-nums}
+.status .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--sign);margin-right:6px;vertical-align:middle}
+.status .dot.warn{background:var(--yellow)}
+.band{background:var(--sign);height:6px;box-shadow:inset 0 -2px 0 #00000018}
+
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.tile .k{font-size:12.5px;color:var(--muted)}
+.tile .v{font-family:var(--font-mono);font-size:28px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.2}
+.tile .v small{font-size:13px;color:var(--muted);margin-left:4px;font-family:var(--font-body)}
+.tile.fresh .v{color:var(--fresh)}
+.tile{border-top:3px solid var(--sign)}
+.tile.fresh{border-top-color:var(--accent)}
+.trend{display:flex;align-items:flex-end;gap:3px;height:34px;margin-top:6px}
+.trend span{flex:1;background:var(--sign);opacity:.85;border-radius:2px 2px 0 0;min-height:2px}
+.trend span.zero{background:var(--line);opacity:1}
+.trend-axis{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10.5px;color:var(--muted)}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:20px;align-items:start;padding-bottom:30px}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.toolbar input{flex:1;min-width:180px;font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.toolbar select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);max-width:100%}
+.toolbar .clear{font:inherit;font-size:13px;border:0;background:none;color:var(--sign);cursor:pointer;text-decoration:underline}
+
+.day{margin:18px 0 8px;display:flex;align-items:baseline;gap:10px}
+.day h2{font-size:15px;margin:0;font-weight:700;display:flex;align-items:center;gap:8px}
+.day h2::before{content:"";width:6px;height:18px;background:var(--accent);transform:skewX(-20deg);border-radius:1px}
+.day .cnt{font-size:12.5px;color:var(--muted)}
+.day::after{content:"";flex:1;border-bottom:1px dashed var(--line);transform:translateY(-4px)}
+
+.item{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px;display:grid;gap:6px}
+.item.is-new{border-left-color:var(--accent)}
+.item:hover{border-color:var(--sign)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12.5px;color:var(--muted);align-items:center}
+.meta time{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.badge{font-size:11.5px;font-weight:700;padding:1px 8px;border-radius:4px;background:var(--yellow);color:#1a1a1a}
+.src{font-weight:500;color:var(--ink)}
+.item h3{margin:0;font-size:16.5px;line-height:1.45;text-wrap:balance}
+.item h3 a{text-decoration:none}
+.item h3 a:hover{text-decoration:underline}
+.item p{margin:0;color:var(--ink);max-width:68ch}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.reposts{font-size:12.5px;color:var(--muted)}
+.reposts a{color:var(--sign)}
+
+/* 路線盾牌 */
+.shield{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;line-height:1.3;border:1px solid var(--line);border-radius:6px;padding:2px 8px 2px 3px;background:var(--card);cursor:pointer;color:var(--ink);font-family:inherit}
+.shield .r{font-family:var(--font-mono);font-weight:500;font-size:11.5px;background:var(--sign);color:#fff;border-radius:4px;padding:1px 6px;white-space:nowrap}
+.shield .r.nat{background:var(--shield)}
+.shield .r.org{background:#5b6b63}
+.shield[aria-pressed="true"]{border-color:var(--sign);box-shadow:inset 0 0 0 1px var(--sign)}
+
+aside .box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:16px}
+aside h2{font-size:14.5px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+aside h2::before{content:"";width:5px;height:16px;background:var(--accent);transform:skewX(-20deg)}
+aside .box{border-top:4px solid var(--sign)}
+.plist{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.plist button{width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;text-align:left;font:inherit;font-size:13px;background:none;border:0;border-radius:6px;padding:5px 6px;color:var(--ink);cursor:pointer}
+.plist button:hover{background:var(--paper)}
+.plist button[aria-pressed="true"]{background:var(--paper);box-shadow:inset 3px 0 0 var(--sign)}
+.plist .n{font-family:var(--font-mono);font-variant-numeric:tabular-nums;color:var(--muted);font-size:12.5px}
+.plist .n.has{color:var(--sign);font-weight:500}
+.log{list-style:none;margin:0;padding:0;font-size:12.5px;display:grid;gap:3px}
+.log li{display:flex;justify-content:space-between;gap:8px;font-family:var(--font-mono);font-variant-numeric:tabular-nums;color:var(--muted)}
+.log li b{color:var(--ink);font-weight:500}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:28px 18px;text-align:center;color:var(--muted)}
+.empty strong{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
+.notice{font-size:13px;color:var(--muted);padding:8px 0}
+footer{background:var(--sign);color:#e6f4f2;padding:18px 0 30px;font-size:12.5px}
+footer .srcs a{color:#ffffff!important}
+footer .srcs{display:flex;flex-wrap:wrap;gap:4px 12px;margin:6px 0}
+footer .srcs a{color:var(--muted)}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="topbar">
+      <span class="org">交通部公路局 南區公路新建工程分局</span>
+      <span style="font-size:13px">進行中工程新聞監測｜近 15 日</span>
+    </div>
+    <div class="headcard">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">報</div>
+        <div>
+          <div class="eyebrow">Southern Region New Construction Branch · News Monitor</div>
+          <h1>新工南工程輿情日報</h1>
+        </div>
+      </div>
+      <div class="status" id="status">
+        <span><i class="dot warn" id="dot"></i>最後更新 <b id="lastRun">讀取中…</b></span>
+        <span>下次更新 <b id="nextRun">—</b></span>
+        <span>排程 <b>08:00–16:00 每 2 小時</b></span>
+      </div>
+    </div>
+  </div>
+  <div class="band"></div>
+</header>
+
+<main class="wrap">
+  <section class="tiles" aria-label="摘要">
+    <div class="tile"><div class="k">近 15 日相關新聞</div><div class="v" id="tTotal">—<small>則</small></div></div>
+    <div class="tile fresh"><div class="k">本次更新新增</div><div class="v" id="tNew">—<small>則</small></div></div>
+    <div class="tile"><div class="k">涉及工程</div><div class="v" id="tProj">—<small>項</small></div></div>
+    <div class="tile"><div class="k">每日則數（<span id="tRange">—</span>）</div><div class="trend" id="trend" aria-hidden="true"></div><div class="trend-axis"><span id="tA">—</span><span id="tB">—</span></div></div>
+  </section>
+
+  <div class="layout">
+    <section aria-label="新聞列表">
+      <div class="toolbar">
+        <label for="q" class="sr" style="position:absolute;left:-9999px">搜尋</label>
+        <input id="q" type="search" placeholder="搜尋標題、摘要或來源">
+        <label for="proj" style="position:absolute;left:-9999px">工程篩選</label>
+        <select id="proj"><option value="">全部工程</option></select>
+        <button class="clear" id="clear" type="button" hidden>清除篩選</button>
+      </div>
+      <div id="notice" class="notice" hidden></div>
+      <div id="list"><div class="empty"><strong>讀取新聞資料中…</strong></div></div>
+    </section>
+
+    <aside>
+      <div class="box">
+        <h2>監測工程（點選可篩選）</h2>
+        <p class="notice" id="psrc" style="padding:0 0 6px">清單同步自「新工南-目前進行中工程」</p>
+        <ul class="plist" id="plist"></ul>
+      </div>
+      <div class="box">
+        <h2>今日更新紀錄</h2>
+        <ul class="log" id="log"><li>尚無紀錄</li></ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>新聞搜尋範圍：</div>
+    <div class="srcs">
+      <a href="https://tw.news.yahoo.com/">Yahoo奇摩新聞</a><a href="https://today.line.me/tw/">LINE TODAY</a><a href="https://news.google.com/">Google 新聞</a><a href="https://www.ettoday.net/">ETtoday新聞雲</a><a href="https://www.storm.mg/">風傳媒</a><a href="https://newtalk.tw/">Newtalk新聞</a><a href="https://www.twreporter.org/">報導者</a><a href="https://udn.com/">聯合新聞網</a><a href="https://news.ltn.com.tw/">自由時報電子報</a><a href="https://www.chinatimes.com/">中時新聞網</a><a href="https://news.pts.org.tw/">公視新聞網</a><a href="https://news.tvbs.com.tw/">TVBS新聞網</a><a href="https://www.setn.com/">三立新聞網</a><a href="https://news.ebc.net.tw/">東森新聞網</a><a href="https://www.cw.com.tw/">天下雜誌</a><a href="https://www.businessweekly.com.tw/">商業周刊</a><a href="https://money.udn.com/">經濟日報</a><a href="https://technews.tw/">科技新報</a><a href="https://global.udn.com/">轉角國際</a><a href="https://www.cna.com.tw/">中央社</a><a href="https://www.ctee.com.tw/">工商時報</a>
+    </div>
+    <div>摘要為自動整理，內容以原始報導為準；著作權屬原媒體所有。發布日期超過 15 日的新聞會自動移除。</div>
+  </div>
+</footer>
+
+<script>
+const ORG = {key:"org", n:0, r:"新工南", cls:"org", name:"分局綜合（分局本身相關）"};
+const DEFAULT_PROJECTS = [
+  {key:"p123ae523d5",n:1, r:"國3",cls:"nat",name:"代辦古坑交流道平面側車道工程"},
+  {key:"p1501899b84",n:2, r:"台17",name:"東石南橋改建工程"},
+  {key:"pf40c9f604e",n:3, r:"台61",name:"增設布袋新塭交流道工程"},
+  {key:"p9d72e1615f",n:4, r:"台61",name:"西濱快速公路曾文溪橋新建工程"},
+  {key:"pfa7101a13d",n:5, r:"台19甲",name:"47K+350~50K+800 拓寬工程"},
+  {key:"p6cda163a4a",n:6, r:"台27甲",name:"新威大橋延伸國10 六龜至美濃段"},
+  {key:"p6f9b0f4c32",n:7, r:"台27甲",name:"新威大橋延伸國10 美濃至里港段"},
+  {key:"pe0a67677f5",n:8, r:"台3",name:"406K+830 新旗尾橋改建工程"},
+  {key:"p21d9baf164",n:9, r:"台39",name:"高鐵橋下道路延伸仁武（6標）、優先路段"},
+  {key:"pb1820b4f61",n:10,r:"高屏2快",cls:"nat",name:"C1標 18K+660～19K+540 新建工程"},
+  {key:"p743ef5bb11",n:11,r:"高屏2快",cls:"nat",name:"東西向第2條快速公路新建計畫（7標）"},
+  {key:"p31a5d6408e",n:12,r:"台39",name:"延伸至仁武 綜合規劃及第一階段環評"},
+  {key:"pcc32f2d42c",n:13,r:"台61",name:"南延至高雄 綜合規劃及環評"},
+  {key:"pfd9619cb4a",n:14,r:"高屏2快",cls:"nat",name:"「高雄－屏東間東西向第2條快速公路新建計畫」"},
+  {key:"pd702a801c1",n:15,r:"台86",name:"跨越台19甲線系統銜接國道3號 環評"},
+  {key:"pc488c59291",n:16,r:"台86",name:"向東延伸至台3線新闢道路 環評"}
+];
+let PROJECTS = [ORG, ...DEFAULT_PROJECTS];
+let P = Object.fromEntries(PROJECTS.map(p=>[p.key,p]));
+function setProjects(items){
+  if (!Array.isArray(items) || !items.length) return;
+  const clean = items.filter(x=>x && typeof x.key==="string" && x.key!=="org")
+    .map(x=>({key:x.key, n:x.n, r:String(x.r||"工程"), cls:x.cls==="nat"?"nat":"", name:String(x.name||x.full||""), full:String(x.full||"")}))
+    .sort((a,b)=>(a.n||0)-(b.n||0));
+  PROJECTS = [ORG, ...clean];
+  P = Object.fromEntries(PROJECTS.map(p=>[p.key,p]));
+  fillSelect();
+}
+const WINDOW_MS = 15*24*3600*1000;
+const state = {news:[], meta:null, q:"", proj:"", loaded:false};
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl = u => /^https?:\/\//i.test(u||"") ? u : "#";
+
+function tw(ts, withDate=true){
+  const d = new Date(ts + 8*3600*1000);
+  const p = n=>String(n).padStart(2,"0");
+  const date = `${d.getUTCFullYear()}/${p(d.getUTCMonth()+1)}/${p(d.getUTCDate())}`;
+  const time = `${p(d.getUTCHours())}:${p(d.getUTCMinutes())}`;
+  return withDate ? `${date} ${time}` : time;
+}
+function twDateKey(ts){ const d=new Date(ts+8*3600*1000); return Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate()); }
+const WEEK = "日一二三四五六";
+function dayLabel(key){ const d=new Date(key); return `${d.getUTCMonth()+1} 月 ${d.getUTCDate()} 日（${WEEK[d.getUTCDay()]}）`; }
+
+function nextRunTs(now=Date.now()){
+  // 台灣時間 6,8,...,22 點
+  const t = new Date(now + 8*3600*1000);
+  const h = t.getUTCHours(), m = t.getUTCMinutes();
+  let nh = null;
+  for (let x=8; x<=16; x+=2){ if (x>h || (x===h && m<1)) { nh=x; break; } }
+  const base = Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate()) - 8*3600*1000;
+  return nh===null ? base + (24+8)*3600*1000 : base + nh*3600*1000;
+}
+
+function shield(no){
+  const p = P[no]; if(!p) return "";
+  const cls = p.cls ? " "+p.cls : "";
+  return `<button type="button" class="shield" data-proj="${esc(no)}" aria-pressed="${state.proj===String(no)}" title="${esc(p.full||p.name)}"><span class="r${cls}">${esc(p.r)}</span>${esc(p.name)}</button>`;
+}
+
+function visibleNews(){
+  const cutoff = Date.now() - WINDOW_MS;
+  return state.news.filter(n => (n.publishedTs||0) >= cutoff);
+}
+
+function render(){
+  const meta = state.meta || {};
+  const all = visibleNews();
+  // status
+  if (meta.lastRunTs){ $("lastRun").textContent = tw(meta.lastRunTs); $("dot").classList.remove("warn"); }
+  else if (state.loaded){ $("lastRun").textContent = "尚未執行"; }
+  $("nextRun").textContent = tw(nextRunTs());
+  // tiles
+  $("tTotal").innerHTML = `${all.length}<small>則</small>`;
+  const newCount = all.filter(n => meta.lastRunId && n.firstSeenRun === meta.lastRunId).length;
+  $("tNew").innerHTML = `${meta.lastRunId ? newCount : "—"}<small>則</small>`;
+  const projSet = new Set(); all.forEach(n => (n.projects||[]).forEach(x => { if (x!=="org" && P[x]) projSet.add(x); }));
+  $("tProj").innerHTML = `${projSet.size}<small>/ ${PROJECTS.length-1} 項</small>`;
+  // trend
+  const today = twDateKey(Date.now()); const days=[];
+  for (let i=14;i>=0;i--) days.push(today - i*86400000);
+  const counts = days.map(k => all.filter(n => twDateKey(n.publishedTs)===k).length);
+  const mx = Math.max(1, ...counts);
+  $("trend").innerHTML = counts.map((c,i)=>`<span class="${c?"":"zero"}" style="height:${c? Math.max(8, c/mx*100):6}%" title="${dayLabel(days[i])}：${c} 則"></span>`).join("");
+  const fmt = k => { const d=new Date(k); return `${d.getUTCMonth()+1}/${d.getUTCDate()}`; };
+  $("tA").textContent = fmt(days[0]); $("tB").textContent = fmt(days[14]);
+  $("tRange").textContent = `${fmt(days[0])}–${fmt(days[14])}`;
+  // project list
+  const pc = {}; all.forEach(n => (n.projects||[]).forEach(x => pc[x]=(pc[x]||0)+1));
+  $("plist").innerHTML = PROJECTS.map(p => `<li><button type="button" data-proj="${esc(p.key)}" aria-pressed="${state.proj===p.key}" title="${esc(p.full||p.name)}"><span class="shield" style="pointer-events:none;border:0;padding:0"><span class="r${p.cls?" "+p.cls:""}">${esc(p.r)}</span></span><span>${esc(p.name)}</span><span class="n${pc[p.key]?" has":""}">${pc[p.key]||0}</span></button></li>`).join("");
+  // log
+  const hist = (meta.history||[]).filter(h => twDateKey(h.ts)===today).slice(-9).reverse();
+  $("log").innerHTML = hist.length ? hist.map(h=>`<li><span>${tw(h.ts,false)}</span><span>新增 <b>${h.added||0}</b>${h.merged?`・併入 ${h.merged}`:""}・移除 ${h.removed||0}・共 ${h.total??"—"}</span></li>`).join("") : "<li>今日尚無更新紀錄</li>";
+  // filters
+  const q = state.q.trim().toLowerCase();
+  let items = all;
+  if (state.proj!=="") items = items.filter(n => (n.projects||[]).map(String).includes(state.proj));
+  if (q) items = items.filter(n => [n.title,n.summary,n.source,...(n.reposts||[]).map(r=>r.source)].join(" ").toLowerCase().includes(q));
+  $("clear").hidden = !(q || state.proj!=="");
+  $("proj").value = state.proj;
+  items.sort((a,b)=>(b.publishedTs||0)-(a.publishedTs||0));
+  if (!state.loaded){ return; }
+  if (!items.length){
+    $("list").innerHTML = all.length
+      ? `<div class="empty"><strong>沒有符合篩選條件的新聞</strong>請調整搜尋字詞或工程篩選。</div>`
+      : `<div class="empty"><strong>近 15 日查無相關新聞</strong>系統每日 08:00 至 16:00 每 2 小時自動搜尋一次，有新報導會自動出現在這裡。</div>`;
+    return;
+  }
+  let html = "", cur = null, group = [];
+  const flush = () => { if (cur===null) return; html += `<div class="day"><h2>${dayLabel(cur)}</h2><span class="cnt">${group.length} 則</span></div>` + group.join(""); };
+  for (const n of items){
+    const k = twDateKey(n.publishedTs);
+    if (k!==cur){ flush(); cur=k; group=[]; }
+    const isNew = meta.lastRunId && n.firstSeenRun === meta.lastRunId;
+    const reposts = (n.reposts||[]).filter(r=>r&&r.url);
+    group.push(`<article class="item${isNew?" is-new":""}">
+      <div class="meta">${isNew?'<span class="badge">新</span>':""}<span class="src">${esc(n.source)}</span><time>${tw(n.publishedTs)}</time>${n.domain?`<span>${esc(n.domain)}</span>`:""}</div>
+      <h3><a href="${esc(safeUrl(n.url))}" target="_blank" rel="noopener">${esc(n.title)}</a></h3>
+      ${n.summary?`<p>${esc(n.summary)}</p>`:""}
+      <div class="tags">${(n.projects||[]).map(x=>shield(x)).join("")}</div>
+      ${reposts.length?`<div class="reposts">其他報導（${reposts.length}）：${reposts.map(r=>`<a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener" title="${esc(r.title||"")}${r.published?" ・ "+esc(tw(Date.parse(r.published))):""}">${esc(r.source||"連結")}</a>`).join("、")}</div>`:""}
+    </article>`);
+  }
+  flush();
+  $("list").innerHTML = html;
+}
+
+// filters UI
+function fillSelect(){ $("proj").innerHTML = '<option value="">全部工程</option>' + PROJECTS.map(p=>`<option value="${esc(p.key)}">${esc(p.r)}｜${esc(p.name)}</option>`).join(""); $("proj").value = state.proj; }
+fillSelect();
+$("q").addEventListener("input", e => { state.q = e.target.value; render(); });
+$("proj").addEventListener("change", e => { state.proj = e.target.value; render(); });
+$("clear").addEventListener("click", () => { state.q=""; state.proj=""; $("q").value=""; render(); });
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-proj]"); if(!b) return;
+  const v = b.getAttribute("data-proj");
+  state.proj = (state.proj===v) ? "" : v; render();
+});
+render();
+setInterval(()=>{ $("nextRun").textContent = tw(nextRunTs()); }, 60000);
+
+(async () => {
+  const showNotice = t => { const el=$("notice"); el.textContent=t; el.hidden=!t; };
+  try {
+    const res = await fetch("data.json?t=" + Date.now(), {cache:"no-store"});
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const d = await res.json();
+    if (d.projects && Array.isArray(d.projects.items)) {
+      setProjects(d.projects.items);
+      if (d.projects.syncedTs) $("psrc").textContent = `清單同步自「新工南-目前進行中工程」，最後同步 ${tw(d.projects.syncedTs)}`;
+    }
+    state.meta = d.meta || null;
+    state.news = Array.isArray(d.news) ? d.news : [];
+    state.loaded = true;
+    render();
+  } catch (e) {
+    state.loaded = true;
+    $("list").innerHTML = `<div class="empty"><strong>讀取新聞資料失敗</strong>請稍後重新整理頁面。</div>`;
+    $("lastRun").textContent = "—";
+  }
+})();
+</script>
+</body>
+</html>
