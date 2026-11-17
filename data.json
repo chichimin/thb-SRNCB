@@ -280,11 +280,19 @@
     "removed": 0,
     "total": 1,
     "ts": 1794874436000
+   },
+   {
+    "added": 0,
+    "id": "20261117-1014",
+    "merged": 0,
+    "removed": 0,
+    "total": 1,
+    "ts": 1794881645000
    }
   ],
-  "lastRunAt": "2026-11-17T08:13:56+08:00",
-  "lastRunId": "20261117-0813",
-  "lastRunTs": 1794874436000,
+  "lastRunAt": "2026-11-17T10:14:05+08:00",
+  "lastRunId": "20261117-1014",
+  "lastRunTs": 1794881645000,
   "merged": 0,
   "removed": 0,
   "total": 1,
@@ -424,8 +432,8 @@
   ],
   "sourceFileId": "1nqjHMSk8zmz8-81JQgY0yAzXCTSnIk2IZ51QBJjS1Zo",
   "sourceTitle": "新工南-目前進行中工程",
-  "syncedAt": "2026-11-17T08:13:56+08:00",
-  "syncedTs": 1794874436000
+  "syncedAt": "2026-11-17T10:14:05+08:00",
+  "syncedTs": 1794881645000
  },
  "news": [
   {
