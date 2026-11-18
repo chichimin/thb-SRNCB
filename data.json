@@ -1,6 +1,6 @@
 {
  "meta": {
-  "added": 2,
+  "added": 0,
   "history": [
    {
     "added": 0,
@@ -344,12 +344,20 @@
     "removed": 0,
     "total": 2,
     "ts": 1794982503000
+   },
+   {
+    "added": 0,
+    "id": "20261118-1614",
+    "merged": 3,
+    "removed": 0,
+    "total": 2,
+    "ts": 1794989651000
    }
   ],
-  "lastRunAt": "2026-11-18T14:15:03+08:00",
-  "lastRunId": "20261118-1415",
-  "lastRunTs": 1794982503000,
-  "merged": 0,
+  "lastRunAt": "2026-11-18T16:14:11+08:00",
+  "lastRunId": "20261118-1614",
+  "lastRunTs": 1794989651000,
+  "merged": 3,
   "removed": 0,
   "total": 2,
   "windowEnd": "2026-11-18",
@@ -488,8 +496,8 @@
   ],
   "sourceFileId": "1nqjHMSk8zmz8-81JQgY0yAzXCTSnIk2IZ51QBJjS1Zo",
   "sourceTitle": "新工南-目前進行中工程",
-  "syncedAt": "2026-11-18T14:15:03+08:00",
-  "syncedTs": 1794982503000
+  "syncedAt": "2026-11-18T16:14:11+08:00",
+  "syncedTs": 1794989651000
  },
  "news": [
   {
@@ -551,6 +559,27 @@
      "source": "自由時報電子報",
      "title": "屏東首場公辦政見會 周春米端4年政績，蘇清泉大開支票福利會更好",
      "url": "https://news.ltn.com.tw/news/politics/breakingnews/5644823"
+    },
+    {
+     "foundTs": 1794989651000,
+     "published": "2026-11-18T12:50:00+08:00",
+     "source": "Yahoo奇摩新聞",
+     "title": "屏東首場公辦政見會 周春米端4年政績、蘇清泉大開支票福利會更好",
+     "url": "https://tw.news.yahoo.com/%E5%B1%8F%E6%9D%B1%E9%A6%96%E5%A0%B4%E5%85%AC%E8%BE%A6%E6%94%BF%E8%A6%8B%E6%9C%83-%E5%91%A8%E6%98%A5%E7%B1%B3%E7%AB%AF4%E5%B9%B4%E6%94%BF%E7%B8%BE-%E8%98%87%E6%B8%85%E6%B3%89%E5%A4%A7%E9%96%8B%E6%94%AF%E7%A5%A8%E7%A6%8F%E5%88%A9%E6%9C%83%E6%9B%B4%E5%A5%BD-045024192.html"
+    },
+    {
+     "foundTs": 1794989651000,
+     "published": "2026-11-18T13:51:00+08:00",
+     "source": "聯合新聞網",
+     "title": "屏東縣長選舉政見會 蘇清泉拋社福升級、周春米端施政成績單",
+     "url": "https://udn.com/news/story/124652/9886448"
+    },
+    {
+     "foundTs": 1794989651000,
+     "published": "2026-11-18T00:00:00+08:00",
+     "source": "經濟日報",
+     "title": "政見會 周春米細數4年成績單 全齡照顧 福利須兼顧財政紀律、年年落實",
+     "url": "https://money.udn.com/money/story/12622/9886132"
     }
    ],
    "source": "聯合新聞網",
