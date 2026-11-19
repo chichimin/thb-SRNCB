@@ -1,6 +1,6 @@
 {
  "meta": {
-  "added": 2,
+  "added": 0,
   "history": [
    {
     "added": 0,
@@ -368,12 +368,20 @@
     "removed": 0,
     "total": 6,
     "ts": 1795054451000
+   },
+   {
+    "added": 0,
+    "id": "20261119-1214",
+    "merged": 3,
+    "removed": 0,
+    "total": 6,
+    "ts": 1795061674000
    }
   ],
-  "lastRunAt": "2026-11-19T10:14:11+08:00",
-  "lastRunId": "20261119-1014",
-  "lastRunTs": 1795054451000,
-  "merged": 1,
+  "lastRunAt": "2026-11-19T12:14:34+08:00",
+  "lastRunId": "20261119-1214",
+  "lastRunTs": 1795061674000,
+  "merged": 3,
   "removed": 0,
   "total": 6,
   "windowEnd": "2026-11-19",
@@ -512,8 +520,8 @@
   ],
   "sourceFileId": "1nqjHMSk8zmz8-81JQgY0yAzXCTSnIk2IZ51QBJjS1Zo",
   "sourceTitle": "新工南-目前進行中工程",
-  "syncedAt": "2026-11-19T10:14:11+08:00",
-  "syncedTs": 1795054451000
+  "syncedAt": "2026-11-19T12:14:34+08:00",
+  "syncedTs": 1795061674000
  },
  "news": [
   {
@@ -552,6 +560,13 @@
      "source": "風傳媒",
      "title": "張嘉郡提出古坑發展願景 盼交通建設、產業升級、觀光再進化",
      "url": "https://www.storm.mg/article/11182468"
+    },
+    {
+     "foundTs": 1795061674000,
+     "published": "2026-11-18T10:30:00+08:00",
+     "source": "三立新聞網",
+     "title": "張嘉郡提出古坑發展願景 盼交通建設、產業升級、觀光再進化",
+     "url": "https://www.setn.com/news/1940808"
     }
    ],
    "source": "Yahoo奇摩新聞",
@@ -726,6 +741,20 @@
      "source": "Yahoo奇摩新聞",
      "title": "遭批不會生小孩、不會養小孩！周春米政見會回擊了",
      "url": "https://tw.news.yahoo.com/%E9%81%AD%E6%89%B9%E4%B8%8D%E6%9C%83%E7%94%9F%E5%B0%8F%E5%AD%A9-%E4%B8%8D%E6%9C%83%E9%A4%8A%E5%B0%8F%E5%AD%A9-%E5%91%A8%E6%98%A5%E7%B1%B3%E6%94%BF%E8%A6%8B%E6%9C%83%E5%9B%9E%E6%93%8A%E4%BA%86-050314450.html"
+    },
+    {
+     "foundTs": 1795061674000,
+     "published": "2026-11-18T12:08:00+08:00",
+     "source": "經濟日報",
+     "title": "「候選人不要只會罵我不會生小孩」 周春米：細膩政策才能全面照顧",
+     "url": "https://money.udn.com/money/story/12622/9886185"
+    },
+    {
+     "foundTs": 1795061674000,
+     "published": "2026-11-19T04:10:00+08:00",
+     "source": "Yahoo奇摩新聞",
+     "title": "周春米秀施政成績 蘇清泉端政策牛肉",
+     "url": "https://tw.news.yahoo.com/%E5%91%A8%E6%98%A5%E7%B1%B3%E7%A7%80%E6%96%BD%E6%94%BF%E6%88%90%E7%B8%BE-%E8%98%87%E6%B8%85%E6%B3%89%E7%AB%AF%E6%94%BF%E7%AD%96%E7%89%9B%E8%82%89-201000720.html"
     }
    ],
    "source": "聯合新聞網",
