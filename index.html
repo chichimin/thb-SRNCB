@@ -98,6 +98,9 @@ header.top{background:var(--sign);padding:14px 0 0}
 .meta{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12.5px;color:var(--muted);align-items:center}
 .meta time{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 .badge{font-size:11.5px;font-weight:700;padding:1px 8px;border-radius:4px;background:var(--yellow);color:#1a1a1a}
+.badge.dup{background:var(--line);color:var(--ink)}
+.first{font-size:12.5px;color:var(--muted)}
+.reposts .add{color:var(--accent);font-weight:700}
 .src{font-weight:500;color:var(--ink)}
 .item h3{margin:0;font-size:16.5px;line-height:1.45;text-wrap:balance}
 .item h3 a{text-decoration:none}
@@ -234,7 +237,7 @@ header.top{position:relative;background:
       <div class="status" id="status">
         <span><i class="dot warn" id="dot"></i>最後更新 <b id="lastRun">讀取中…</b></span>
         <span>下次更新 <b id="nextRun">—</b></span>
-        <span>排程 <b>08:00–16:00 每 2 小時</b></span>
+        <span>排程 <b>每日 08:45、11:45、15:45</b></span>
       </div>
     </div>
   </div>
@@ -351,13 +354,13 @@ const WEEK = "日一二三四五六";
 function dayLabel(key){ const d=new Date(key); return `${d.getUTCMonth()+1} 月 ${d.getUTCDate()} 日（${WEEK[d.getUTCDay()]}）`; }
 
 function nextRunTs(now=Date.now()){
-  // 台灣時間 6,8,...,22 點
+  // 台灣時間每日 08:45、11:45、15:45
+  const SLOTS = [8*60+45, 11*60+45, 15*60+45];
   const t = new Date(now + 8*3600*1000);
-  const h = t.getUTCHours(), m = t.getUTCMinutes();
-  let nh = null;
-  for (let x=8; x<=16; x+=2){ if (x>h || (x===h && m<1)) { nh=x; break; } }
+  const cur = t.getUTCHours()*60 + t.getUTCMinutes();
   const base = Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate()) - 8*3600*1000;
-  return nh===null ? base + (24+8)*3600*1000 : base + nh*3600*1000;
+  const nx = SLOTS.find(s => s > cur);
+  return nx===undefined ? base + (24*60+SLOTS[0])*60000 : base + nx*60000;
 }
 
 function shield(no){
@@ -393,7 +396,7 @@ function render(){
     const add = meta.lastRunId ? newCount : 0;
     g.textContent = all.length
       ? `今天是 ${day}，近 15 日共有 ${all.length} 則工程相關新聞${add?`，本次新增 ${add} 則，快來看看！`:"，目前沒有新增。"}`
-      : `今天是 ${day}，近 15 日還沒有找到相關新聞，我每 2 小時會再幫你找一次！`;
+      : `今天是 ${day}，近 15 日還沒有找到相關新聞，每天 08:45、11:45、15:45 我會再幫你找一次！`;
   })();
   $("tProj").innerHTML = `${projSet.size}<small>/ ${PROJECTS.length-1} 項</small>`;
   // trend
@@ -423,7 +426,7 @@ function render(){
   if (!items.length){
     $("list").innerHTML = all.length
       ? `<div class="empty"><strong>沒有符合篩選條件的新聞</strong>請調整搜尋字詞或工程篩選。</div>`
-      : `<div class="empty"><strong>近 15 日查無相關新聞</strong>系統每日 08:00 至 16:00 每 2 小時自動搜尋一次，有新報導會自動出現在這裡。</div>`;
+      : `<div class="empty"><strong>近 15 日查無相關新聞</strong>系統每日 08:45、11:45、15:45 自動搜尋，有新報導會自動出現在這裡。</div>`;
     return;
   }
   let html = "", cur = null, group = [];
@@ -432,13 +435,17 @@ function render(){
     const k = twDateKey(n.publishedTs);
     if (k!==cur){ flush(); cur=k; group=[]; }
     const isNew = meta.lastRunId && n.firstSeenRun === meta.lastRunId;
+    const isDup = !!meta.lastRunId && !isNew;
+    const firstAt = n.firstSeenTs ? tw(n.firstSeenTs) : esc(n.firstSeenRun||"");
+    const addedNow = r => !isNew && meta.lastRunTs && Number(r.foundTs) === Number(meta.lastRunTs);
     const reposts = (n.reposts||[]).filter(r=>r&&r.url);
     group.push(`<article class="item${isNew?" is-new":""}">
-      <div class="meta">${isNew?'<span class="badge">新</span>':""}<span class="src">${esc(n.source)}</span><time>${tw(n.publishedTs)}</time>${n.domain?`<span>${esc(n.domain)}</span>`:""}</div>
+      <div class="meta">${isNew?'<span class="badge">新</span>':""}${isDup?'<span class="badge dup">重複</span>':""}<span class="src">${esc(n.source)}</span><time>${tw(n.publishedTs)}</time>${n.domain?`<span>${esc(n.domain)}</span>`:""}</div>
       <h3><a href="${esc(safeUrl(n.url))}" target="_blank" rel="noopener">${esc(n.title)}</a></h3>
       ${n.summary?`<p>${esc(n.summary)}</p>`:""}
+      ${isDup?`<div class="first">首次列於：${firstAt} 更新</div>`:""}
       <div class="tags">${(n.projects||[]).map(x=>shield(x)).join("")}</div>
-      ${reposts.length?`<div class="reposts">其他報導（${reposts.length}）：${reposts.map(r=>`<a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener" title="${esc(r.title||"")}${r.published?" ・ "+esc(tw(Date.parse(r.published))):""}">${esc(r.source||"連結")}</a>`).join("、")}</div>`:""}
+      ${reposts.length?`<div class="reposts">其他報導（${reposts.length}）：${reposts.map(r=>`${addedNow(r)?'<span class="add">（新增）</span>':""}<a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener" title="${esc(r.title||"")}${r.published?" ・ "+esc(tw(Date.parse(r.published))):""}">${esc(r.source||"連結")}</a>`).join("、")}</div>`:""}
     </article>`);
   }
   flush();
