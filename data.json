@@ -1,6 +1,6 @@
 {
  "meta": {
-  "added": 0,
+  "added": 2,
   "history": [
    {
     "added": 0,
@@ -352,16 +352,24 @@
     "removed": 0,
     "total": 2,
     "ts": 1794989651000
+   },
+   {
+    "added": 2,
+    "id": "20261119-0813",
+    "merged": 1,
+    "removed": 0,
+    "total": 4,
+    "ts": 1795047234000
    }
   ],
-  "lastRunAt": "2026-11-18T16:14:11+08:00",
-  "lastRunId": "20261118-1614",
-  "lastRunTs": 1794989651000,
-  "merged": 3,
+  "lastRunAt": "2026-11-19T08:13:54+08:00",
+  "lastRunId": "20261119-0813",
+  "lastRunTs": 1795047234000,
+  "merged": 1,
   "removed": 0,
-  "total": 2,
-  "windowEnd": "2026-11-18",
-  "windowStart": "2026-11-04"
+  "total": 4,
+  "windowEnd": "2026-11-19",
+  "windowStart": "2026-11-05"
  },
  "projects": {
   "items": [
@@ -496,8 +504,8 @@
   ],
   "sourceFileId": "1nqjHMSk8zmz8-81JQgY0yAzXCTSnIk2IZ51QBJjS1Zo",
   "sourceTitle": "新工南-目前進行中工程",
-  "syncedAt": "2026-11-18T16:14:11+08:00",
-  "syncedTs": 1794989651000
+  "syncedAt": "2026-11-19T08:13:54+08:00",
+  "syncedTs": 1795047234000
  },
  "news": [
   {
@@ -525,6 +533,78 @@
    "title": "專訪4-4》從律師到縣長 周春米談再拚四年：高鐵、快速道路與防災建設繼續推",
    "url": "https://newtalk.tw/news/view/2026-11-18/1071699",
    "id": "86e7671f7398d9268c79"
+  },
+  {
+   "domain": "udn.com",
+   "eventKey": "20261107-賴瑞隆岡山造勢",
+   "firstSeenRun": "20261119-0813",
+   "firstSeenTs": 1795047234000,
+   "projects": [
+    "p21d9baf164",
+    "p31a5d6408e",
+    "pcc32f2d42c"
+   ],
+   "published": "2026-11-07T19:42:00+08:00",
+   "publishedTs": 1794051720000,
+   "reposts": [
+    {
+     "foundTs": 1795047234000,
+     "published": "2026-11-07T20:35:00+08:00",
+     "source": "中時新聞網",
+     "title": "賴瑞隆岡山造勢 轟韓國瑜「萬里長城」喊話交通「順起來」",
+     "url": "https://www.chinatimes.com/realtimenews/20261107003023-260407"
+    }
+   ],
+   "source": "聯合新聞網",
+   "summary": "民進黨高雄市長候選人賴瑞隆7日晚間在岡山舉辦造勢活動，提出三大保證，其中交通建設部分承諾完成國道1號岡山第二交流道、橋頭科學園區聯外道路，以及台39線、台61線等重大道路工程，強化北高雄路網串聯。報導僅點名路線，未提及工程期程、經費或主辦機關。",
+   "title": "賴瑞隆岡山造勢提3大保證 陳其邁批若柯志恩當選「就要花850億」",
+   "url": "https://udn.com/news/story/124652/9864137",
+   "id": "c1db9bbae8ffc4028df5"
+  },
+  {
+   "domain": "www.chinatimes.com",
+   "eventKey": "20261114-高雄市長公辦政見會",
+   "firstSeenRun": "20261119-0813",
+   "firstSeenTs": 1795047234000,
+   "projects": [
+    "p21d9baf164",
+    "p31a5d6408e",
+    "p6cda163a4a",
+    "p6f9b0f4c32",
+    "pd702a801c1",
+    "pc488c59291",
+    "pcc32f2d42c"
+   ],
+   "published": "2026-11-14T15:33:00+08:00",
+   "publishedTs": 1794641580000,
+   "reposts": [
+    {
+     "foundTs": 1795047234000,
+     "published": "2026-11-14T16:48:00+08:00",
+     "source": "Yahoo奇摩新聞",
+     "title": "政見會端「五區均衡、交通大進擊」亮眼藍圖！柯志恩重磅拋「三問」轟賴瑞隆：高雄拒絕派系復辟",
+     "url": "https://tw.news.yahoo.com/%E6%94%BF%E8%A6%8B%E6%9C%83%E7%AB%AF-%E4%BA%94%E5%8D%80%E5%9D%87%E8%A1%A1-%E4%BA%A4%E9%80%9A%E5%A4%A7%E9%80%B2%E6%93%8A-%E4%BA%AE%E7%9C%BC%E8%97%8D%E5%9C%96-%E6%9F%AF%E5%BF%97%E6%81%A9%E9%87%8D%E7%A3%85%E6%8B%8B-084828808.html"
+    },
+    {
+     "foundTs": 1795047234000,
+     "published": "2026-11-15T05:30:00+08:00",
+     "source": "自由時報電子報",
+     "title": "高雄市長政見會》柯志恩提五區均衡市政藍圖 端政策牛肉",
+     "url": "https://news.ltn.com.tw/news/politics/paper/1778522"
+    },
+    {
+     "foundTs": 1795047234000,
+     "published": "2026-11-15T05:30:00+08:00",
+     "source": "Yahoo奇摩新聞",
+     "title": "高雄市長政見會》柯志恩提五區均衡市政藍圖 端政策牛肉",
+     "url": "https://tw.news.yahoo.com/%E9%AB%98%E9%9B%84%E5%B8%82%E9%95%B7%E6%94%BF%E8%A6%8B%E6%9C%83-%E6%9F%AF%E5%BF%97%E6%81%A9%E6%8F%90%E4%BA%94%E5%8D%80%E5%9D%87%E8%A1%A1%E5%B8%82%E6%94%BF%E8%97%8D%E5%9C%96-%E7%AB%AF%E6%94%BF%E7%AD%96%E7%89%9B%E8%82%89-213000538.html"
+    }
+   ],
+   "source": "中時新聞網",
+   "summary": "高雄市長選舉公辦政見發表會14日登場，國民黨候選人柯志恩提出「交通大進擊」構想，除爭取小港機場24小時營運、興建路竹至前鎮雙層快速公路外，也要求國道10號延伸、台39線、台86線、台61線等道路建設如期完工，串成環城快速路網。報導未提及各工程的具體期程或主辦機關。",
+   "title": "柯志恩提交通大升級 爭取24小時機場 路竹至前鎮雙層快速公路",
+   "url": "https://www.chinatimes.com/realtimenews/20261114002143-260407",
+   "id": "e1bdb92964817e5f760d"
   },
   {
    "domain": "udn.com",
@@ -580,6 +660,13 @@
      "source": "經濟日報",
      "title": "政見會 周春米細數4年成績單 全齡照顧 福利須兼顧財政紀律、年年落實",
      "url": "https://money.udn.com/money/story/12622/9886132"
+    },
+    {
+     "foundTs": 1795047234000,
+     "published": "2026-11-19T00:00:00+08:00",
+     "source": "自由時報電子報",
+     "title": "《屏東縣長政見會》周春米端4年政績 蘇清泉開福利支票",
+     "url": "https://news.ltn.com.tw/news/Pingtung/paper/1779063"
     }
    ],
    "source": "聯合新聞網",
