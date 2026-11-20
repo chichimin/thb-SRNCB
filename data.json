@@ -1,6 +1,6 @@
 {
  "meta": {
-  "added": 0,
+  "added": 1,
   "history": [
    {
     "added": 0,
@@ -392,16 +392,24 @@
     "removed": 0,
     "total": 6,
     "ts": 1795076066000
+   },
+   {
+    "added": 1,
+    "id": "20261120-0846",
+    "merged": 1,
+    "removed": 0,
+    "total": 7,
+    "ts": 1795135560000
    }
   ],
-  "lastRunAt": "2026-11-19T16:14:26+08:00",
-  "lastRunId": "20261119-1614",
-  "lastRunTs": 1795076066000,
-  "merged": 0,
+  "lastRunAt": "2026-11-20T08:46:00+08:00",
+  "lastRunId": "20261120-0846",
+  "lastRunTs": 1795135560000,
+  "merged": 1,
   "removed": 0,
-  "total": 6,
-  "windowEnd": "2026-11-19",
-  "windowStart": "2026-11-05"
+  "total": 7,
+  "windowEnd": "2026-11-20",
+  "windowStart": "2026-11-06"
  },
  "projects": {
   "items": [
@@ -536,8 +544,8 @@
   ],
   "sourceFileId": "1nqjHMSk8zmz8-81JQgY0yAzXCTSnIk2IZ51QBJjS1Zo",
   "sourceTitle": "新工南-目前進行中工程",
-  "syncedAt": "2026-11-19T16:14:26+08:00",
-  "syncedTs": 1795076066000
+  "syncedAt": "2026-11-20T08:46:00+08:00",
+  "syncedTs": 1795135560000
  },
  "news": [
   {
@@ -616,6 +624,24 @@
    "title": "專訪4-4》從律師到縣長 周春米談再拚四年：高鐵、快速道路與防災建設繼續推",
    "url": "https://newtalk.tw/news/view/2026-11-18/1071699",
    "id": "86e7671f7398d9268c79"
+  },
+  {
+   "domain": "money.udn.com",
+   "eventKey": "20261120-經濟日報六都財經政見賴瑞隆",
+   "firstSeenRun": "20261120-0846",
+   "firstSeenTs": 1795135560000,
+   "projects": [
+    "pfd9619cb4a",
+    "p743ef5bb11"
+   ],
+   "published": "2026-11-20T03:24:00+08:00",
+   "publishedTs": 1795116240000,
+   "reposts": [],
+   "source": "經濟日報",
+   "summary": "經濟日報整理高雄市長候選人賴瑞隆的財經政見，以AI產業與大南方計畫為核心。交通方面主張推動國道7號及高屏第二快速公路等建設，並加速捷運紅線北延與南延林園；報導未提及工程主辦機關或期程。",
+   "title": "六都市長財經政見／高雄賴瑞隆：AI 扮靠山 推大南方計畫",
+   "url": "https://money.udn.com/money/story/124921/9890138",
+   "id": "8e814d58af98a2aad122"
   },
   {
    "domain": "udn.com",
@@ -778,6 +804,13 @@
      "source": "Yahoo奇摩新聞",
      "title": "周春米秀施政成績 蘇清泉端政策牛肉",
      "url": "https://tw.news.yahoo.com/%E5%91%A8%E6%98%A5%E7%B1%B3%E7%A7%80%E6%96%BD%E6%94%BF%E6%88%90%E7%B8%BE-%E8%98%87%E6%B8%85%E6%B3%89%E7%AB%AF%E6%94%BF%E7%AD%96%E7%89%9B%E8%82%89-201000720.html"
+    },
+    {
+     "foundTs": 1795135560000,
+     "published": "2026-11-18T13:28:00+08:00",
+     "source": "Yahoo奇摩新聞",
+     "title": "屏東縣長選舉政見會 蘇清泉拋社福升級、周春米端施政成績單",
+     "url": "https://tw.news.yahoo.com/%E5%B1%8F%E6%9D%B1%E7%B8%A3%E9%95%B7%E9%81%B8%E8%88%89%E6%94%BF%E8%A6%8B%E6%9C%83-%E8%98%87%E6%B8%85%E6%B3%89%E6%8B%8B%E7%A4%BE%E7%A6%8F%E5%8D%87%E7%B4%9A-%E5%91%A8%E6%98%A5%E7%B1%B3%E7%AB%AF%E6%96%BD%E6%94%BF%E6%88%90%E7%B8%BE%E5%96%AE-052821878.html"
     }
    ],
    "source": "聯合新聞網",
