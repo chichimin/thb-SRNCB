@@ -1,14 +1,7 @@
 {
  "meta": {
-  "added": 0,
+  "added": 1,
   "history": [
-   {
-    "added": 0,
-    "id": "20261113-1137",
-    "removed": 0,
-    "total": 0,
-    "ts": 1794541020000
-   },
    {
     "added": 0,
     "id": "20261113-1138",
@@ -464,16 +457,24 @@
     "removed": 0,
     "total": 6,
     "ts": 1795419933000
+   },
+   {
+    "added": 1,
+    "id": "20261124-0845",
+    "merged": 0,
+    "removed": 0,
+    "total": 7,
+    "ts": 1795481144000
    }
   ],
-  "lastRunAt": "2026-11-23T15:45:33+08:00",
-  "lastRunId": "20261123-1545",
-  "lastRunTs": 1795419933000,
+  "lastRunAt": "2026-11-24T08:45:44+08:00",
+  "lastRunId": "20261124-0845",
+  "lastRunTs": 1795481144000,
   "merged": 0,
   "removed": 0,
-  "total": 6,
-  "windowEnd": "2026-11-23",
-  "windowStart": "2026-11-09"
+  "total": 7,
+  "windowEnd": "2026-11-24",
+  "windowStart": "2026-11-10"
  },
  "projects": {
   "items": [
@@ -608,8 +609,8 @@
   ],
   "sourceFileId": "1nqjHMSk8zmz8-81JQgY0yAzXCTSnIk2IZ51QBJjS1Zo",
   "sourceTitle": "新工南-目前進行中工程",
-  "syncedAt": "2026-11-23T15:45:33+08:00",
-  "syncedTs": 1795419933000
+  "syncedAt": "2026-11-24T08:45:44+08:00",
+  "syncedTs": 1795481144000
  },
  "news": [
   {
@@ -714,6 +715,31 @@
    "title": "【重複】六都市長財經政見／高雄賴瑞隆：AI 扮靠山 推大南方計畫",
    "url": "https://money.udn.com/money/story/124921/9890138",
    "id": "8e814d58af98a2aad122"
+  },
+  {
+   "domain": "news.ltn.com.tw",
+   "eventKey": "20261122-陳世凱屏東輔選談交通建設",
+   "firstSeenRun": "20261124-0845",
+   "firstSeenTs": 1795481144000,
+   "projects": [
+    "p743ef5bb11"
+   ],
+   "published": "2026-11-22T16:02:00+08:00",
+   "publishedTs": 1795334520000,
+   "reposts": [
+    {
+     "foundTs": 1795481144000,
+     "published": "2026-11-22T16:02:00+08:00",
+     "source": "Yahoo奇摩新聞",
+     "title": "交通建設提升屏東發展 陳世凱：斥資7000億「台灣尾變台灣頭」",
+     "url": "https://tw.news.yahoo.com/%E4%BA%A4%E9%80%9A%E5%BB%BA%E8%A8%AD%E6%8F%90%E5%8D%87%E5%B1%8F%E6%9D%B1%E7%99%BC%E5%B1%95-%E9%99%B3%E4%B8%96%E5%87%B1-%E6%96%A5%E8%B3%877000%E5%84%84-%E5%8F%B0%E7%81%A3%E5%B0%BE%E8%AE%8A%E5%8F%B0%E7%81%A3%E9%A0%AD-080222501.html"
+    }
+   ],
+   "source": "自由時報電子報",
+   "summary": "交通部長陳世凱11月21日至22日在屏東各地為周春米站台，指出中央與地方合計約投入7000億元推動屏東交通建設。他在說明北屏東建設時提及高屏二快與國道10號東延等快速公路，另也談到高鐵南延、高捷南延與屏南快速道路等；報導未提及工程期程或主辦機關。",
+   "title": "【新】交通建設提升屏東發展 陳世凱：斥資7000億「台灣尾變台灣頭」",
+   "url": "https://news.ltn.com.tw/news/politics/breakingnews/5649588",
+   "id": "bb4db91254d29e62208a"
   },
   {
    "domain": "www.chinatimes.com",
