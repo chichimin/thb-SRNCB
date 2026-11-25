@@ -237,7 +237,7 @@ header.top{position:relative;background:
       <div class="status" id="status">
         <span><i class="dot warn" id="dot"></i>最後更新 <b id="lastRun">讀取中…</b></span>
         <span>下次更新 <b id="nextRun">—</b></span>
-        <span>排程 <b>平日 08:45、11:45、15:45；週末 12:15</b></span>
+        <span>排程 <b>平日 07:45、11:45、15:45；週末 12:15</b></span>
       </div>
     </div>
   </div>
@@ -296,8 +296,8 @@ header.top{position:relative;background:
 <footer>
   <div class="wrap">
     <div>新聞搜尋範圍：</div>
-    <div class="srcs">
-      <a href="https://tw.news.yahoo.com/">Yahoo奇摩新聞</a><a href="https://today.line.me/tw/">LINE TODAY</a><a href="https://news.google.com/">Google 新聞</a><a href="https://www.ettoday.net/">ETtoday新聞雲</a><a href="https://www.storm.mg/">風傳媒</a><a href="https://newtalk.tw/">Newtalk新聞</a><a href="https://www.twreporter.org/">報導者</a><a href="https://udn.com/">聯合新聞網</a><a href="https://news.ltn.com.tw/">自由時報電子報</a><a href="https://www.chinatimes.com/">中時新聞網</a><a href="https://news.pts.org.tw/">公視新聞網</a><a href="https://news.tvbs.com.tw/">TVBS新聞網</a><a href="https://www.setn.com/">三立新聞網</a><a href="https://news.ebc.net.tw/">東森新聞網</a><a href="https://www.cw.com.tw/">天下雜誌</a><a href="https://www.businessweekly.com.tw/">商業周刊</a><a href="https://money.udn.com/">經濟日報</a><a href="https://technews.tw/">科技新報</a><a href="https://global.udn.com/">轉角國際</a><a href="https://www.cna.com.tw/">中央社</a><a href="https://www.ctee.com.tw/">工商時報</a>
+    <div class="srcs" id="srcs">
+      <a href="https://tw.news.yahoo.com/">Yahoo奇摩新聞</a><a href="https://today.line.me/tw/">LINE TODAY</a><a href="https://news.google.com/">Google 新聞</a><a href="https://www.ettoday.net/">ETtoday新聞雲</a><a href="https://www.storm.mg/">風傳媒</a><a href="https://newtalk.tw/">Newtalk新聞</a><a href="https://www.twreporter.org/">報導者</a><a href="https://udn.com/">聯合新聞網</a><a href="https://news.ltn.com.tw/">自由時報電子報</a><a href="https://www.chinatimes.com/">中時新聞網</a><a href="https://news.pts.org.tw/">公視新聞網</a><a href="https://news.tvbs.com.tw/">TVBS新聞網</a><a href="https://www.setn.com/">三立新聞網</a><a href="https://news.ebc.net.tw/">東森新聞網</a><a href="https://www.cw.com.tw/">天下雜誌</a><a href="https://www.businessweekly.com.tw/">商業周刊</a><a href="https://money.udn.com/">經濟日報</a><a href="https://technews.tw/">科技新報</a><a href="https://global.udn.com/">轉角國際</a><a href="https://www.cna.com.tw/">中央社</a><a href="https://www.ctee.com.tw/">工商時報</a><a href="https://www.taiwantimes.com.tw/app-container/app-content/new/new-home">臺灣時報</a>
     </div>
     <div>摘要為自動整理，內容以原始報導為準；著作權屬原媒體所有。發布日期超過 15 日的新聞會自動移除。</div>
   </div>
@@ -327,6 +327,12 @@ const DEFAULT_PROJECTS = [
 ];
 let PROJECTS = [ORG, ...DEFAULT_PROJECTS];
 let P = Object.fromEntries(PROJECTS.map(p=>[p.key,p]));
+function setPlatforms(list){
+  if (!Array.isArray(list) || !list.length) return;
+  const el = document.getElementById("srcs"); if (!el) return;
+  el.innerHTML = list.filter(x=>x && x.name && /^https?:\/\//i.test(x.url||""))
+    .map(x=>`<a href="${esc(x.url)}">${esc(x.name)}</a>`).join("");
+}
 function setProjects(items){
   if (!Array.isArray(items) || !items.length) return;
   const clean = items.filter(x=>x && typeof x.key==="string" && x.key!=="org")
@@ -354,8 +360,8 @@ const WEEK = "日一二三四五六";
 function dayLabel(key){ const d=new Date(key); return `${d.getUTCMonth()+1} 月 ${d.getUTCDate()} 日（${WEEK[d.getUTCDay()]}）`; }
 
 function nextRunTs(now=Date.now()){
-  // 台灣時間：週一至週五 08:45、11:45、15:45；週六、日 12:15
-  const slotsOf = wd => (wd===0 || wd===6) ? [12*60+15] : [8*60+45, 11*60+45, 15*60+45];
+  // 台灣時間：週一至週五 07:45、11:45、15:45；週六、日 12:15
+  const slotsOf = wd => (wd===0 || wd===6) ? [12*60+15] : [7*60+45, 11*60+45, 15*60+45];
   const t = new Date(now + 8*3600*1000);
   const cur = t.getUTCHours()*60 + t.getUTCMinutes();
   const base = Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate()) - 8*3600*1000;
@@ -400,7 +406,7 @@ function render(){
     const add = meta.lastRunId ? newCount : 0;
     g.textContent = all.length
       ? `今天是 ${day}，近 15 日共有 ${all.length} 則工程相關新聞${add?`，本次新增 ${add} 則，快來看看！`:"，目前沒有新增。"}`
-      : `今天是 ${day}，近 15 日還沒有找到相關新聞，平日 08:45、11:45、15:45，週末 12:15，我會再幫你找一次！`;
+      : `今天是 ${day}，近 15 日還沒有找到相關新聞，平日 07:45、11:45、15:45，週末 12:15，我會再幫你找一次！`;
   })();
   $("tProj").innerHTML = `${projSet.size}<small>/ ${PROJECTS.length-1} 項</small>`;
   // trend
@@ -430,7 +436,7 @@ function render(){
   if (!items.length){
     $("list").innerHTML = all.length
       ? `<div class="empty"><strong>沒有符合篩選條件的新聞</strong>請調整搜尋字詞或工程篩選。</div>`
-      : `<div class="empty"><strong>近 15 日查無相關新聞</strong>系統平日 08:45、11:45、15:45，週六、日 12:15 自動搜尋，有新報導會自動出現在這裡。</div>`;
+      : `<div class="empty"><strong>近 15 日查無相關新聞</strong>系統平日 07:45、11:45、15:45，週六、日 12:15 自動搜尋，有新報導會自動出現在這裡。</div>`;
     return;
   }
   let html = "", cur = null, group = [];
@@ -488,6 +494,7 @@ setInterval(()=>{ $("nextRun").textContent = tw(nextRunTs()); }, 60000);
     }
     if (d.projects && Array.isArray(d.projects.items)) {
       setProjects(d.projects.items);
+      setPlatforms(d.platforms);
       if (d.projects.syncedTs) $("psrc").textContent = `清單同步自「新工南-目前進行中工程」，最後同步 ${tw(d.projects.syncedTs)}`;
     }
     state.meta = d.meta || null;

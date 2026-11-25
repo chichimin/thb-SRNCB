@@ -977,5 +977,139 @@
    "url": "https://udn.com/news/story/124652/9886132",
    "id": "e30b1a2359049e7b690b"
   }
+ ],
+ "platforms": [
+  {
+   "name": "Yahoo奇摩新聞",
+   "url": "https://tw.news.yahoo.com/",
+   "domain": "tw.news.yahoo.com",
+   "host": "tw.news.yahoo.com"
+  },
+  {
+   "name": "LINE TODAY",
+   "url": "https://today.line.me/tw/",
+   "domain": "today.line.me/tw",
+   "host": "today.line.me"
+  },
+  {
+   "name": "Google 新聞",
+   "url": "https://news.google.com/",
+   "domain": "news.google.com",
+   "host": "news.google.com"
+  },
+  {
+   "name": "ETtoday新聞雲",
+   "url": "https://www.ettoday.net/",
+   "domain": "www.ettoday.net",
+   "host": "www.ettoday.net"
+  },
+  {
+   "name": "風傳媒",
+   "url": "https://www.storm.mg/",
+   "domain": "www.storm.mg",
+   "host": "www.storm.mg"
+  },
+  {
+   "name": "Newtalk新聞",
+   "url": "https://newtalk.tw/",
+   "domain": "newtalk.tw",
+   "host": "newtalk.tw"
+  },
+  {
+   "name": "報導者",
+   "url": "https://www.twreporter.org/",
+   "domain": "www.twreporter.org",
+   "host": "www.twreporter.org"
+  },
+  {
+   "name": "聯合新聞網",
+   "url": "https://udn.com/",
+   "domain": "udn.com",
+   "host": "udn.com"
+  },
+  {
+   "name": "自由時報電子報",
+   "url": "https://news.ltn.com.tw/",
+   "domain": "news.ltn.com.tw",
+   "host": "news.ltn.com.tw"
+  },
+  {
+   "name": "中時新聞網",
+   "url": "https://www.chinatimes.com/",
+   "domain": "www.chinatimes.com",
+   "host": "www.chinatimes.com"
+  },
+  {
+   "name": "公視新聞網",
+   "url": "https://news.pts.org.tw/",
+   "domain": "news.pts.org.tw",
+   "host": "news.pts.org.tw"
+  },
+  {
+   "name": "TVBS新聞網",
+   "url": "https://news.tvbs.com.tw/",
+   "domain": "news.tvbs.com.tw",
+   "host": "news.tvbs.com.tw"
+  },
+  {
+   "name": "三立新聞網",
+   "url": "https://www.setn.com/",
+   "domain": "www.setn.com",
+   "host": "www.setn.com"
+  },
+  {
+   "name": "東森新聞網",
+   "url": "https://news.ebc.net.tw/",
+   "domain": "news.ebc.net.tw",
+   "host": "news.ebc.net.tw"
+  },
+  {
+   "name": "天下雜誌",
+   "url": "https://www.cw.com.tw/",
+   "domain": "www.cw.com.tw",
+   "host": "www.cw.com.tw"
+  },
+  {
+   "name": "商業周刊",
+   "url": "https://www.businessweekly.com.tw/",
+   "domain": "www.businessweekly.com.tw",
+   "host": "www.businessweekly.com.tw"
+  },
+  {
+   "name": "經濟日報",
+   "url": "https://money.udn.com/",
+   "domain": "money.udn.com",
+   "host": "money.udn.com"
+  },
+  {
+   "name": "科技新報",
+   "url": "https://technews.tw/",
+   "domain": "technews.tw",
+   "host": "technews.tw"
+  },
+  {
+   "name": "轉角國際",
+   "url": "https://global.udn.com/",
+   "domain": "global.udn.com",
+   "host": "global.udn.com"
+  },
+  {
+   "name": "中央社",
+   "url": "https://www.cna.com.tw/",
+   "domain": "www.cna.com.tw",
+   "host": "www.cna.com.tw"
+  },
+  {
+   "name": "工商時報",
+   "url": "https://www.ctee.com.tw/",
+   "domain": "www.ctee.com.tw",
+   "host": "www.ctee.com.tw"
+  },
+  {
+   "name": "臺灣時報",
+   "url": "https://www.taiwantimes.com.tw/app-container/app-content/new/new-home",
+   "domain": "www.taiwantimes.com.tw",
+   "host": "www.taiwantimes.com.tw"
+  }
  ]
 }

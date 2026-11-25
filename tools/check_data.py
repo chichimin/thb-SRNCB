@@ -16,3 +16,9 @@ for n in news:
         assert k in n, f"新聞缺少 {k}: {n.get('title')}"
     assert str(n["url"]).startswith("http"), f"網址錯誤: {n['url']}"
 print(f"OK：工程 {len(items)} 項，新聞 {len(news)} 則")
+pl = d.get("platforms")
+if pl is not None:
+    assert isinstance(pl, list) and pl, "platforms 必須是非空陣列"
+    for x in pl:
+        assert x.get("name") and str(x.get("url","")).startswith("http"), f"平台格式錯誤: {x}"
+    print(f"OK：新聞平台 {len(pl)} 個")
