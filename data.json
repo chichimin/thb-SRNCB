@@ -3,13 +3,6 @@
   "added": 0,
   "history": [
    {
-    "added": 0,
-    "id": "20261113-1211",
-    "removed": 0,
-    "total": 1,
-    "ts": 1794543112000
-   },
-   {
     "added": 1,
     "id": "20261113-1402",
     "removed": 0,
@@ -469,16 +462,24 @@
     "removed": 0,
     "total": 7,
     "ts": 1795592755000
+   },
+   {
+    "added": 0,
+    "id": "20261126-0745",
+    "merged": 1,
+    "removed": 0,
+    "total": 7,
+    "ts": 1795650338000
    }
   ],
-  "lastRunAt": "2026-11-25T15:45:55+08:00",
-  "lastRunId": "20261125-1545",
-  "lastRunTs": 1795592755000,
-  "merged": 0,
+  "lastRunAt": "2026-11-26T07:45:38+08:00",
+  "lastRunId": "20261126-0745",
+  "lastRunTs": 1795650338000,
+  "merged": 1,
   "removed": 0,
   "total": 7,
-  "windowEnd": "2026-11-25",
-  "windowStart": "2026-11-11"
+  "windowEnd": "2026-11-26",
+  "windowStart": "2026-11-12"
  },
  "projects": {
   "items": [
@@ -613,8 +614,8 @@
   ],
   "sourceFileId": "1nqjHMSk8zmz8-81JQgY0yAzXCTSnIk2IZ51QBJjS1Zo",
   "sourceTitle": "新工南-目前進行中工程",
-  "syncedAt": "2026-11-25T15:45:55+08:00",
-  "syncedTs": 1795592755000
+  "syncedAt": "2026-11-26T07:45:38+08:00",
+  "syncedTs": 1795650338000
  },
  "platforms": [
   {
@@ -883,8 +884,15 @@
      "foundTs": 1795491941000,
      "published": "2026-11-21T19:41:00+08:00",
      "source": "中央社",
-     "title": "（新增）卓榮泰盼周春米引領翻轉選舉文化　蘇貞昌讚3個第一",
+     "title": "卓榮泰盼周春米引領翻轉選舉文化　蘇貞昌讚3個第一",
      "url": "https://www.cna.com.tw/news/aipl/202611210192.aspx"
+    },
+    {
+     "foundTs": 1795650338000,
+     "published": "2026-11-22T00:00:00+08:00",
+     "source": "Yahoo奇摩新聞",
+     "title": "（新增）周春米東港東隆宮造勢 蘇清泉六堆忠義亭催票",
+     "url": "https://tw.news.yahoo.com/%E5%91%A8%E6%98%A5%E7%B1%B3%E6%9D%B1%E6%B8%AF%E6%9D%B1%E9%9A%86%E5%AE%AE%E9%80%A0%E5%8B%A2-%E8%98%87%E6%B8%85%E6%B3%89%E5%85%AD%E5%A0%86%E5%BF%A0%E7%BE%A9%E4%BA%AD%E5%82%AC%E7%A5%A8-213000509.html"
     }
    ],
    "source": "自由時報電子報",
