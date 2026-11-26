@@ -3,13 +3,6 @@
   "added": 0,
   "history": [
    {
-    "added": 0,
-    "id": "20261113-1802",
-    "removed": 0,
-    "total": 2,
-    "ts": 1794564170000
-   },
-   {
     "added": 1,
     "id": "20261113-2002",
     "removed": 0,
@@ -472,16 +465,24 @@
     "removed": 0,
     "total": 7,
     "ts": 1795679182000
+   },
+   {
+    "added": 0,
+    "id": "20261127-0746",
+    "merged": 3,
+    "removed": 0,
+    "total": 7,
+    "ts": 1795736769000
    }
   ],
-  "lastRunAt": "2026-11-26T15:46:22+08:00",
-  "lastRunId": "20261126-1546",
-  "lastRunTs": 1795679182000,
-  "merged": 0,
+  "lastRunAt": "2026-11-27T07:46:09+08:00",
+  "lastRunId": "20261127-0746",
+  "lastRunTs": 1795736769000,
+  "merged": 3,
   "removed": 0,
   "total": 7,
-  "windowEnd": "2026-11-26",
-  "windowStart": "2026-11-12"
+  "windowEnd": "2026-11-27",
+  "windowStart": "2026-11-13"
  },
  "projects": {
   "items": [
@@ -616,8 +617,8 @@
   ],
   "sourceFileId": "1nqjHMSk8zmz8-81JQgY0yAzXCTSnIk2IZ51QBJjS1Zo",
   "sourceTitle": "新工南-目前進行中工程",
-  "syncedAt": "2026-11-26T15:46:22+08:00",
-  "syncedTs": 1795679182000
+  "syncedAt": "2026-11-27T07:46:09+08:00",
+  "syncedTs": 1795736769000
  },
  "platforms": [
   {
@@ -895,6 +896,27 @@
      "source": "Yahoo奇摩新聞",
      "title": "（新增）周春米東港東隆宮造勢 蘇清泉六堆忠義亭催票",
      "url": "https://tw.news.yahoo.com/%E5%91%A8%E6%98%A5%E7%B1%B3%E6%9D%B1%E6%B8%AF%E6%9D%B1%E9%9A%86%E5%AE%AE%E9%80%A0%E5%8B%A2-%E8%98%87%E6%B8%85%E6%B3%89%E5%85%AD%E5%A0%86%E5%BF%A0%E7%BE%A9%E4%BA%AD%E5%82%AC%E7%A5%A8-213000509.html"
+    },
+    {
+     "foundTs": 1795736769000,
+     "published": "2026-11-21T21:42:00+08:00",
+     "source": "自由時報電子報",
+     "title": "（新增）曝2年就還完縣府長債 周春米：比4年前更想當縣長",
+     "url": "https://news.ltn.com.tw/news/Pingtung/breakingnews/5649044"
+    },
+    {
+     "foundTs": 1795736769000,
+     "published": "2026-11-22T00:00:00+08:00",
+     "source": "自由時報電子報",
+     "title": "（新增）周春米1天連4場造勢 卓榮泰、蘇貞昌站台",
+     "url": "https://news.ltn.com.tw/news/politics/paper/1779437"
+    },
+    {
+     "foundTs": 1795736769000,
+     "published": "2026-11-22T00:00:00+08:00",
+     "source": "自由時報電子報",
+     "title": "（新增）周春米東港東隆宮造勢 蘇清泉六堆忠義亭催票",
+     "url": "https://news.ltn.com.tw/news/politics/paper/1779523"
     }
    ],
    "source": "自由時報電子報",
