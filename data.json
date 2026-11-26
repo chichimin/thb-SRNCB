@@ -3,13 +3,6 @@
   "added": 0,
   "history": [
    {
-    "added": 1,
-    "id": "20261113-1402",
-    "removed": 0,
-    "total": 2,
-    "ts": 1794549739000
-   },
-   {
     "added": 0,
     "id": "20261113-1602",
     "removed": 0,
@@ -470,12 +463,20 @@
     "removed": 0,
     "total": 7,
     "ts": 1795650338000
+   },
+   {
+    "added": 0,
+    "id": "20261126-1145",
+    "merged": 0,
+    "removed": 0,
+    "total": 7,
+    "ts": 1795664731000
    }
   ],
-  "lastRunAt": "2026-11-26T07:45:38+08:00",
-  "lastRunId": "20261126-0745",
-  "lastRunTs": 1795650338000,
-  "merged": 1,
+  "lastRunAt": "2026-11-26T11:45:31+08:00",
+  "lastRunId": "20261126-1145",
+  "lastRunTs": 1795664731000,
+  "merged": 0,
   "removed": 0,
   "total": 7,
   "windowEnd": "2026-11-26",
@@ -614,8 +615,8 @@
   ],
   "sourceFileId": "1nqjHMSk8zmz8-81JQgY0yAzXCTSnIk2IZ51QBJjS1Zo",
   "sourceTitle": "新工南-目前進行中工程",
-  "syncedAt": "2026-11-26T07:45:38+08:00",
-  "syncedTs": 1795650338000
+  "syncedAt": "2026-11-26T11:45:31+08:00",
+  "syncedTs": 1795664731000
  },
  "platforms": [
   {
